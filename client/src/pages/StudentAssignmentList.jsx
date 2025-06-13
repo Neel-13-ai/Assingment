@@ -249,7 +249,7 @@ const StudentAssignmentList = () => {
           <div className="w-50  d-flex border border-secondary rounded s-inp">
             <input
               type="text"
-              className="form-control   w-md-75" 
+              className="form-control   w-md-75"
               placeholder="Search assignments..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -265,10 +265,18 @@ const StudentAssignmentList = () => {
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value)}
             >
-              <option value="newest"  className="text-white" >Newest First</option>
-              <option value="oldest" className="text-white">Oldest First</option>
-              <option value="atoz" className="text-white">A to Z</option>
-              <option value="ztoa" className="text-white">Z to A</option>
+              <option value="newest" className="text-white">
+                Newest First
+              </option>
+              <option value="oldest" className="text-white">
+                Oldest First
+              </option>
+              <option value="atoz" className="text-white">
+                A to Z
+              </option>
+              <option value="ztoa" className="text-white">
+                Z to A
+              </option>
             </select>
           </div>
         </div>
@@ -291,8 +299,10 @@ const StudentAssignmentList = () => {
               {assignment.dueDate && (
                 <p className="due text-warning">
                   <ClockFading className="mb-1 ms-1" size={19} /> Due :{" "}
-                  <span className="small text-danger ">
-                    {new Date(assignment.dueDate).toLocaleDateString()}
+                  <span className="small text-danger">
+                    {new Intl.DateTimeFormat("en-GB").format(
+                      new Date(assignment.dueDate)
+                    )}
                   </span>
                 </p>
               )}
@@ -314,12 +324,7 @@ const StudentAssignmentList = () => {
                 <div className="ms-3">
                   <button
                     className="btn bg-white border-black text-dark fw-bold mt-2"
-                    onClick={() =>
-                      window.open(
-                        `http://localhost:5000${assignment.filePath}`,
-                        "_blank"
-                      )
-                    }
+                    onClick={() => window.open(assignment.filePath, "_blank")}
                   >
                     <ArrowBigDownDash className="text-black fw-normal" /> File
                   </button>
@@ -344,7 +349,9 @@ const StudentAssignmentList = () => {
                   size={17}
                 />
                 <span className="fw-normal text-secondary">
-                  {new Date(assignment.createdAt).toLocaleDateString()}
+                  {new Intl.DateTimeFormat("en-GB").format(
+                    new Date(assignment.createdAt)
+                  )}
                 </span>
               </p>
 

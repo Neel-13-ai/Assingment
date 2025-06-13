@@ -78,7 +78,7 @@ export const ForgotPass = () => {
 
   return (
     <div className="auth-container bg-black d-flex   justify-content-center">
-      <div className="form-box bg-black w-75 py-3">
+      <div className="form-box bg-black w-25 py-3">
         <h2 className="text-white text-center mt-3">Forgot Password</h2>
         <form onSubmit={sendOtp}>
           <div className="w">

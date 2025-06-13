@@ -40,7 +40,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/forgot-pass" element={<ForgotPass />} />
           <Route path="/reset-pass" element={<ResetPass />} />
-          <Route path="/add-assignment" element={<AddAssignment />} />
+          <Route path="/add-assignments" element={<AddAssignment />} />
           <Route path="/get-assignments" element={<AssignmentList />} />
           <Route path="/assignments" element={<StudentAssignmentList />} />
           <Route path="/add-admin" element={<AddAdmin />} />

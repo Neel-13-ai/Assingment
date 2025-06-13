@@ -3,3 +3,5 @@ node_modules/
 
 # Ignore .env file (for environment variables)
 .env
+
+ client

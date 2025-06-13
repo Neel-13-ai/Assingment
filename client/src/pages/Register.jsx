@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEye, FaEyeSlash  ,FaUserCircle} from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 // import "../style/Auth.css";
 
@@ -93,183 +93,189 @@ export const Register = () => {
 
   return (
     <>
-      <div className="auth-container  bg-black rounded-4  w-50" id="register ">
-        <div className="text-center d-flex flex-column  register ">
-          <span className="text-cente fs-1  text-black">
-            <FaUserCircle/>
-          </span>
+      <div className="   w-100  text-center d-flex flex-column align-items-center ">
+        <di className=" border border-secondary rounded  w-50 px-4 py-3">
+          <h1 className="text-white ">Student Register</h1>
+          <p className="text-secondary">
+            Please fill out the form below to register as a college student.
+          </p>
 
-          <h1 className="text-black">Student Register</h1>
-        </div>
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="d-flex">
-            <div className="w-25">
-              <label htmlFor="name" className="text-white ms-2">
-                Name:
-              </label>
+          <form onSubmit={handleSubmit} className="auth-form  ">
+            <div className="d-flex text-start ms-2 ">
+              <div className="w-25  ">
+                <label htmlFor="name" className="text-white ">
+                  Name:
+                </label>
+              </div>
+
+              <div className="w-75">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Your Name"
+                  required
+                  autoComplete="off"
+                  value={user.name}
+                  onChange={handleInput}
+                  className=" ip w-100 "
+                />
+              </div>
             </div>
 
-            <div className="w-75">
+            <div className="d-flex">
+              <div className="w-25  text-warning">
+                <label htmlFor="enrollmentNumber" className=" text-white">
+                  Enrollment No:
+                </label>
+              </div>
+
               <input
                 type="text"
-                name="name"
-                id="name"
-                placeholder="Enter Your Name"
+                name="enrollmentNumber"
+                id="enrollmentNumber"
+                placeholder=" Enrollment Number"
                 required
                 autoComplete="off"
-                value={user.name}
+                value={user.enrollmentNumber}
                 onChange={handleInput}
-                className=" ip w-100"
+                className="i-p ms-5"
               />
             </div>
-          </div>
 
-          <div className="d-flex">
-            <div className="w-25  text-warning">
-              <label htmlFor="enrollmentNumber" className="ms-2 text-white">
-                Enrollment No:
-              </label>
+            <div className="d-flex">
+              <div className="w-25 text-warning text-start">
+                <label htmlFor="email" className="ms-2 text-white">
+                  Email:
+                </label>
+              </div>
+              <div className="w-75">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="student@gmail.com"
+                  required
+                  autoComplete="off"
+                  value={user.email}
+                  onChange={handleInput}
+                  className=" ip"
+                />
+              </div>
             </div>
 
-            <input
-              type="text"
-              name="enrollmentNumber"
-              id="enrollmentNumber"
-              placeholder="Enter Your Enrollment Number"
-              required
-              autoComplete="off"
-              value={user.enrollmentNumber}
-              onChange={handleInput}
-              className="i-p ms-4"
-            />
-          </div>
+            <div className="d-flex">
+              <div className="w-25 text-warning text-start">
+                <labelbel htmlFor="password" className="ms-2 text-white">
+                  Password:
+                </labelbel>
+              </div>
 
-          <div className="d-flex">
-            <div className="w-25 text-warning">
-              <label htmlFor="email" className="ms-2 text-white">
-                Email:
-              </label>
-            </div>
-            <div className="w-75">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Enter Your Email"
-                required
-                autoComplete="off"
-                value={user.email}
-                onChange={handleInput}
-                className=" ip"
-              />
-            </div>
-          </div>
-
-          <div className="d-flex">
-            <div className="w-25 text-warning">
-              <labelbel htmlFor="password" className="ms-2 text-white">
-                Password:
-              </labelbel>
+              <div className="w-75 d-flex  rounded pass-div  ps ">
+                <input
+                  type={showPass ? "password" : "text"}
+                  name="password"
+                  id="password"
+                  placeholder="Enter Your Password"
+                  required
+                  autoComplete="off"
+                  value={user.password}
+                  onChange={handleInput}
+                  className=" ip  border-0 pass text-white "
+                />
+                <button className="eye-div text-primary me-2  ">
+                  <span
+                    onClick={() => setShowPass(!showPass)}
+                    className=" ms-2"
+                  >
+                    {showPass ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </button>
+              </div>
             </div>
 
-            <div className="w-75 d-flex  rounded pass-div ">
-              <input
-                type={showPass ? "password" : "text"}
-                name="password"
-                id="password"
-                placeholder="Enter Your Password"
-                required
-                autoComplete="off"
-                value={user.password}
-                onChange={handleInput}
-                className=" ip  border-0 pass text-white"
-              />
-              <button className="eye-div text-primary me-2 ">
-                <span onClick={() => setShowPass(!showPass)}>
-                  {showPass ? <FaEyeSlash /> : <FaEye />}
-                </span>
+            <div className="d-flex">
+              <div className="w-25 text-start">
+                <label htmlFor="branch" className="ms-2 text-white">
+                  Branch:
+                </label>
+              </div>
+
+              <div className="w-75">
+                <select
+                  name="branch"
+                  value={user.branch}
+                  onChange={handleInput}
+                  required
+                  className="ip text-white"
+                >
+                  <option value="" disabled className="text-warning  ">
+                    Select Branch
+                  </option>
+                  {branches.map((branch) => (
+                    <option key={branch} value={branch}>
+                      {branch}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="d-flex gap-4 ">
+              <div className="input-group w-50 ms-2">
+                <label htmlFor="year" className="text-white">
+                  Year:
+                </label>
+                <select
+                  name="year"
+                  value={user.year}
+                  onChange={handleYearChange}
+                  className="bg-black text-white border rounded me-5 border-secondary"
+                  required
+                >
+                  {[1, 2, 3, 4].map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="input-group w-50 ">
+                <label htmlFor="sem" className="text-white">
+                  Semester:
+                </label>
+                <select
+                  name="sem"
+                  value={user.sem}
+                  onChange={handleInput}
+                  required
+                  className="border border-secondary rounded text-white bg-black  me-3"
+                >
+                  {validSemesters[user.year].map((sem) => (
+                    <option key={sem} value={sem}>
+                      {sem}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="btn-div ">
+              <button type="submit" className="b-tn p-2 w-100">
+                Register Now
               </button>
             </div>
-          </div>
-
-          <div className="d-flex">
-            <div className="w-25">
-              <label htmlFor="branch" className="ms-2 text-white">
-                Branch:
-              </label>
+            <div className="btn-div url text-center">
+              <p className="text-white">
+                Already User ?
+                <a href="/login" className="ms-2">
+                  Log-in Now
+                </a>
+              </p>
             </div>
-
-            <div className="w-75">
-              <select
-                name="branch"
-                value={user.branch}
-                onChange={handleInput}
-                required
-                className="ip text-white"
-              >
-                {branches.map((branch) => (
-                  <option key={branch} value={branch}>
-                    {branch}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="d-flex gap-4 ">
-            <div className="input-group w-50 ms-2">
-              <label htmlFor="year" className="text-white">
-                Year:
-              </label>
-              <select
-                name="year"
-                value={user.year}
-                onChange={handleYearChange}
-                className="bg-black text-white border rounded me-5 border-secondary"
-                required
-              >
-                {[1, 2, 3, 4].map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="input-group w-50 ">
-              <label htmlFor="sem" className="text-white">
-                Semester:
-              </label>
-              <select
-                name="sem"
-                value={user.sem}
-                onChange={handleInput}
-                required
-                className="border border-secondary rounded text-white bg-black  me-3"
-              >
-                {validSemesters[user.year].map((sem) => (
-                  <option key={sem} value={sem}>
-                    {sem}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="btn-div ">
-            <button type="submit" className="b-tn p-2 w-100">
-              Register Now
-            </button>
-          </div>
-          <div className="btn-div url text-center">
-            <p className="text-white">
-              Already User ?
-              <a href="/login" className="ms-2">
-                Log-in Now
-              </a>
-            </p>
-          </div>
-        </form>
+          </form>
+        </di>
       </div>
     </>
   );

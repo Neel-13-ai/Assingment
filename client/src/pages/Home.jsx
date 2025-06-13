@@ -331,7 +331,7 @@ export const Home = () => {
               <p className=" d-flex justify-content-around  mt-5">
                 {totalAdmins}{" "}
                 <span>
-                  <Users  className="text-danger"/>
+                  <Users className="text-danger" />
                 </span>
               </p>
             </div>
@@ -363,15 +363,18 @@ export const Home = () => {
         )}
 
         {role === "ADMIN" && (
-          <div className="stat-card py-5">
+          <div className="stat-card w-25">
             <h3 className="text-info">Total Students</h3>
 
-            {Object.entries(studentByYear).map(([year, count]) => (
-              <small className="fw-semibold" key={year}>
-                Year {year}: {count}
-                <br />
-              </small>
-            ))}
+            <div className=" mt-4">
+              {Object.entries(studentByYear).map(([year, count]) => (
+                <small className="fw-semibold" key={year}>
+                  Year {year}: {count}
+                  <br />
+                </small>
+              ))}
+              {/* <p>{totalStudnets}</p> */}
+            </div>
           </div>
         )}
 
@@ -431,6 +434,7 @@ export const Home = () => {
           </Link>
         </div>
       </div>
+      
     </div>
   );
 };

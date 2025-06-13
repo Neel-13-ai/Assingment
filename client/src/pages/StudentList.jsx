@@ -36,22 +36,18 @@ const StudentList = () => {
             <th className="text-center">Branch</th>
             <th className="text-center">Year</th>
             <th className="text-center">Sem</th>
-            <th className="text-center">Actions</th>
           </tr>
         </thead>
         <tbody>
           {students.map((student, index) => (
             <tr key={student.id}>
-              <td >{index + 1}</td>
-              <td >{student.enrollmentNumber}</td>
-              <td >{student.name}</td>
-              <td >{student.email}</td>
-              <td >{student.branch}</td>
-              <td >{student.year}</td>
-              <td >{student.sem}</td>
-              <td  id="action">
-
-              </td>
+              <td>{index + 1}</td>
+              <td>{student.enrollmentNumber}</td>
+              <td>{student.name}</td>
+              <td>{student.email}</td>
+              <td>{student.branch}</td>
+              <td>{student.year}</td>
+              <td>{student.sem}</td>
             </tr>
           ))}
         </tbody>

@@ -133,7 +133,7 @@ export const Navbar = ({ children }) => {
               <span className="ms-3 fs-5 text-white mt-1">
                 Assing
                 <span className="text-black bg-warning px-2 py-1 fw-semibold rounded ms-1">
-                  hub
+                  Mate
                 </span>
               </span>
             )}
@@ -147,8 +147,10 @@ export const Navbar = ({ children }) => {
           </Link>
           {userLinks.map((link) => (
             <Link key={link.path} to={link.path} className="sidebar-link">
+            
               {link.icon}
               {!sidebarMinimized && <span>{link.label}</span>}
+            
             </Link>
           ))}
           <hr />

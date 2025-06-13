@@ -101,7 +101,7 @@ select:focus {
 .as-container input:focus,
 select:focus,
 textarea:focus {
-  outline: 1px solid #f97316;
+  outline: 1px solid gray;
 }
 
 /* Title */
@@ -231,7 +231,12 @@ textarea:focus {
   outline: none !important;
 }
 .pass-div {
-  background: #52525b;
+  background: #111827;
+  border: 1px solid rgba(47, 47, 67, 0.845);
+}
+.ps {
+  background: #020817;
+  border: 1px solid rgba(47, 47, 67, 0.845);
 }
 
 /* Focus Effect */
@@ -243,6 +248,7 @@ textarea:focus {
   background-color: #020817;
   padding: 0 10px 0 10px;
   width: 100%;
+  color: white;
 }
 .i-p {
   height: 40px;
@@ -251,6 +257,7 @@ textarea:focus {
   background-color: #020817;
   padding: 0 10px 0 10px;
   width: 100%;
+  color: white;
 }
 
 .ps {
@@ -662,7 +669,6 @@ tr:hover,
   width: 10%;
   margin-left: 10px;
   font-weight: 500;
-
 }
 
 .message {
@@ -739,7 +745,6 @@ tr:hover,
   width: 250px;
   text-align: center;
   border: 1px solid #0206177c;
-
 }
 
 .stat-card h3 {
@@ -767,7 +772,6 @@ tr:hover,
   width: 100%;
   padding: 20px;
   border: 1px solid #0206177c;
-
 
   background: #111827;
 }
@@ -841,4 +845,9 @@ tr:hover,
 
 .d-tails {
   background: #111827;
+}
+
+.scroll-enabled {
+  max-height: 90vh;
+  overflow-y: auto;
 }

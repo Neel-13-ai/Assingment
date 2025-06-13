@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+
+import React, { useState, useRef, useEffect } from "react";
 import { useAdmin } from "../store/adminStore";
 import { useAuth } from "../store/authStore";
-import { Delete, DeleteIcon, Edit, Plus, Trash2 } from "lucide-react";
+import { Edit, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export const AdminList = () => {
-  const { admins, loading, error, deleteAdmin, updateAdmin } = useAdmin();
+  const { admins, loading, error } = useAdmin();
   const { userState } = useAuth();
 
   const [selectedAdmin, setSelectedAdmin] = useState(null);
   const [formData, setFormData] = useState({ name: "", email: "", branch: "" });
   const [showForm, setShowForm] = useState(false);
 
-  const navigate =  useNavigate();
+  const navigate = useNavigate();
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    if (showForm && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [showForm]);
 
   const handleEditClick = (admin) => {
     setSelectedAdmin(admin);
@@ -44,12 +52,9 @@ export const AdminList = () => {
       );
 
       const data = await response.json();
-
-      if (!response.ok)
-        throw new Error(data.message || "Failed to update admin");
+      if (!response.ok) throw new Error(data.message || "Failed to update admin");
 
       alert("Admin updated successfully!");
-      
       setShowForm(false);
       setSelectedAdmin(null);
     } catch (error) {
@@ -67,10 +72,21 @@ export const AdminList = () => {
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
 
   return (
-    <div className="admin-container">
+    <div
+      className={`admin-container ${showForm ? "scroll-enabled" : ""}`}
+      style={{ maxHeight: "90vh", overflowY: showForm ? "auto" : "visible" }}
+    >
       <h1 className="ti">Admins List</h1>
-      <div className="bg-primary border border-black rounded-2 mb-3 ms-2 btn" onClick={() =>navigate("/add-admin")}><span className="text-white"><Plus className="me-1"/>Add Admin</span></div>
-    
+
+      <div
+        className="bg-primary border border-black rounded-2 mb-3 ms-2 btn"
+        onClick={() => navigate("/add-admin")}
+      >
+        <span className="text-white">
+          <Plus className="me-1" /> Add Admin
+        </span>
+      </div>
+
       <table className="table-dark table-hover">
         <thead>
           <tr>
@@ -89,7 +105,9 @@ export const AdminList = () => {
               <td className="text-white">{admin.email}</td>
               <td className="text-white">{admin.branch || "N/A"}</td>
               <td id="action" className="d-flex justify-content-center">
-                <button className="bg-transparent" onClick={() => handleEditClick(admin)}><Edit className="text-info" size={20}/></button>
+                <button className="bg-transparent" onClick={() => handleEditClick(admin)}>
+                  <Edit className="text-info" size={20} />
+                </button>
               </td>
             </tr>
           ))}
@@ -98,7 +116,7 @@ export const AdminList = () => {
 
       {/* Admin Update Form */}
       {selectedAdmin && (
-        <div className="change-password-container">
+        <div ref={formRef} className="change-password-container mt-4">
           <h2 className="heading">Update Admin</h2>
           <div className="in-grp">
             <input
